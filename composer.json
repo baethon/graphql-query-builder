@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "Baethon\\Graphql\\Builder\\": "src/"
-        }
+        },
+        "files": [
+            "./src/helpers.php"
+        ]
     },
     "authors": [
         {

@@ -10,6 +10,6 @@ trait HasArguments
 
     public function setArguments(array|Arguments $arguments): void
     {
-        $this->arguments = $arguments;
+        $this->arguments = Arguments::wrap($arguments);
     }
 }
