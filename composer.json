@@ -1,0 +1,29 @@
+{
+    "name": "baethon/graphql-query-builder",
+    "description": "Array-based GraphQL query builder",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Baethon\\Graphql\\Builder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@baethon.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10",
+        "pestphp/pest": "^2.9"
+    }
+}
