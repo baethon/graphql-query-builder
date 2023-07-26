@@ -19,6 +19,13 @@ class Selector implements Aliasable, Selectable, Argumentable
     {
     }
 
+    public static function wrap($value): mixed
+    {
+        return is_string($value)
+            ? new static($value)
+            : $value;
+    }
+
     public function __toString()
     {
         $args = isset($this->arguments)
@@ -29,6 +36,10 @@ class Selector implements Aliasable, Selectable, Argumentable
             ? "{$this->alias}: "
             : '';
 
-        return "{$alias}{$this->field}{$args}";
+        $selectors = empty($this->selectors)
+            ? ''
+            : new NestedSelector($this->selectors);
+
+        return "{$alias}{$this->field}{$args}{$selectors}";
     }
 }
