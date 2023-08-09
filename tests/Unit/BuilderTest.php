@@ -22,9 +22,10 @@ it('creates alias callable', function () {
         }
     };
 
-    Builder::alias('foo')($class);
+    $actual = Builder::alias('foo')($class);
 
-    expect($class->alias)->toEqual('foo');
+    expect($actual)->not->toEqual($class);
+    expect($actual->alias)->toEqual('foo');
 });
 
 it('creates arguments callable', function ($arguments) {
@@ -38,9 +39,10 @@ it('creates arguments callable', function ($arguments) {
         }
     };
 
-    Builder::arguments($arguments)($class);
+    $actual = Builder::arguments($arguments)($class);
 
-    expect($class->arguments)->toEqual($arguments);
+    expect($actual)->not->toEqual($class);
+    expect($actual->arguments)->toEqual($arguments);
 })->with([
     'arguments instance' => [new Arguments([])],
     'array' => [[]],
@@ -57,7 +59,8 @@ it('creates selectable callable', function () {
         }
     };
 
-    Builder::select(['test'])($class);
+    $actual = Builder::select(['test'])($class);
 
-    expect($class->selectors)->toEqual(['test']);
+    expect($actual)->not->toEqual($class);
+    expect($actual->selectors)->toEqual(['test']);
 });

@@ -42,7 +42,7 @@ class StringablePipeline
 
                 return array_reduce(
                     $normalized,
-                    fn ($stringable, callable $modifier) => tap($stringable, $modifier),
+                    fn ($stringable, callable $modifier) => $modifier($stringable),
                     $stringable,
                 );
             },

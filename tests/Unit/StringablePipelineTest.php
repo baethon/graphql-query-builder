@@ -36,9 +36,16 @@ it('converts array to string', fn (array $input, string $expected) => expect((st
                     {
                         return "test: {$this->i}";
                     }
+
+                    public function increment()
+                    {
+                        $this->i += 1;
+
+                        return $this;
+                    }
                 },
-                fn ($input) => $input->i += 1,
-                fn ($input) => $input->i += 1,
+                fn ($input) => $input->increment(),
+                fn ($input) => $input->increment(),
             ],
         ],
         'test: 2',
@@ -83,5 +90,15 @@ it('converts array to string', fn (array $input, string $expected) => expect((st
             }],
         ],
         "first\nsecond\nthird\nfourth",
+    ],
+    'passes results of modifier' => [
+        [
+            [
+                'first',
+                fn () => 'test',
+            ],
+            'second',
+        ],
+        "test\nsecond",
     ],
 ]);

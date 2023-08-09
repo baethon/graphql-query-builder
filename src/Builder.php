@@ -15,16 +15,31 @@ class Builder
 
     public static function alias(string $alias): callable
     {
-        return fn (Aliasable $aliasable) => $aliasable->setAlias($alias);
+        return function (Aliasable $aliasable) use ($alias) {
+            $copy = clone $aliasable;
+            $copy->setAlias($alias);
+
+            return $copy;
+        };
     }
 
     public static function arguments(array|Arguments $arguments): callable
     {
-        return fn (Argumentable $argumentable) => $argumentable->setArguments($arguments);
+        return function (Argumentable $argumentable) use ($arguments) {
+            $copy = clone $argumentable;
+            $copy->setArguments($arguments);
+
+            return $copy;
+        };
     }
 
     public static function select(array $selectors): callable
     {
-        return fn (Selectable $selectable) => $selectable->setSelectors($selectors);
+        return function (Selectable $selectable) use ($selectors) {
+            $copy = clone $selectable;
+            $copy->setSelectors($selectors);
+
+            return $copy;
+        };
     }
 }
