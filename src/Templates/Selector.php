@@ -38,7 +38,7 @@ class Selector implements Aliasable, Selectable, Argumentable
 
         $selectors = empty($this->selectors)
             ? ''
-            : new NestedSelector($this->selectors);
+            : ' '.(new NestedSelector($this->selectors));
 
         return "{$alias}{$this->field}{$args}{$selectors}";
     }

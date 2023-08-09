@@ -3,20 +3,28 @@
 namespace Baethon\Graphql\Builder\Templates;
 
 use Baethon\Graphql\Builder\Contracts\Selectable;
+use Baethon\Graphql\Builder\StringablePipeline;
 use Baethon\Graphql\Builder\Traits\HasSelectors;
 
 class NestedSelector implements Selectable
 {
     use HasSelectors;
 
-    public function __construct(array $selectors)
+    public function __construct(array $selectors = null)
     {
-        $this->setSelectors($selectors);
+        if (! is_null($selectors)) {
+            $this->selectors = $selectors;
+        }
     }
 
-    // @TODO render the fields
     public function __toString()
     {
-        return "{\n}";
+        $chunks = [
+            '{',
+            (new StringablePipeline($this->selectors)),
+            '}',
+        ];
+
+        return implode("\n", $chunks);
     }
 }
