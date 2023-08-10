@@ -26,7 +26,7 @@ class StringablePipeline
         $modifiers = array_map(
             fn ($value) => is_array($value)
                 ? Builder::select($value)
-                : $value,
+                : Selector::wrap($value),
             $item,
         );
 
@@ -49,6 +49,6 @@ class StringablePipeline
             $this->chunks,
         );
 
-        return implode("\n", $lines);
+        return trim(implode("\n", $lines));
     }
 }

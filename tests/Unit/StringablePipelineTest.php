@@ -1,5 +1,6 @@
 <?php
 
+use Baethon\Graphql\Builder\Builder;
 use Baethon\Graphql\Builder\Contracts\Selectable;
 use Baethon\Graphql\Builder\StringablePipeline;
 use Baethon\Graphql\Builder\Traits\HasSelectors;
@@ -100,5 +101,19 @@ it('converts array to string', fn (array $input, string $expected) => expect((st
             'second',
         ],
         "test\nsecond",
+    ],
+    'includes conditional field' => [
+        [
+            ['first', Builder::when(true)],
+            'second',
+        ],
+        "first\nsecond",
+    ],
+    'excludes conditional field' => [
+        [
+            ['first', Builder::when(false)],
+            'second',
+        ],
+        'second',
     ],
 ]);

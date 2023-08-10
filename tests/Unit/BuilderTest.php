@@ -6,6 +6,8 @@ use Baethon\Graphql\Builder\Contracts\Aliasable;
 use Baethon\Graphql\Builder\Contracts\Argumentable;
 use Baethon\Graphql\Builder\Contracts\Selectable;
 use Baethon\Graphql\Builder\RawValue;
+use Baethon\Graphql\Builder\Templates\EmptySelector;
+use Baethon\Graphql\Builder\Templates\Selector;
 
 it('casts value to RawValue', function () {
     expect(Builder::raw('"test"'))->toEqual(new RawValue('"test"'));
@@ -64,3 +66,50 @@ it('creates selectable callable', function () {
     expect($actual)->not->toEqual($class);
     expect($actual->selectors)->toEqual(['test']);
 });
+
+it('creates selector callable', function () {
+    $class = new class
+    {
+        public function __toString()
+        {
+            return '';
+        }
+    };
+
+    $actual = Builder::selector('test')($class);
+
+    expect($actual)->toEqual(Selector::wrap('test'));
+    expect($actual)->not->toEqual($class);
+});
+
+it('creates when callable', function (bool $condition, $selector, $expected) {
+    $actual = Builder::when($condition)($selector);
+    expect($actual)->toEqual($expected);
+})->with([
+    [
+        true,
+        Selector::wrap('test'),
+        Selector::wrap('test'),
+    ],
+    [
+        false,
+        Selector::wrap('test'),
+        new EmptySelector,
+    ],
+]);
+
+it('creates unless callable', function (bool $condition, $selector, $expected) {
+    $actual = Builder::unless($condition)($selector);
+    expect($actual)->toEqual($expected);
+})->with([
+    [
+        true,
+        Selector::wrap('test'),
+        new EmptySelector,
+    ],
+    [
+        false,
+        Selector::wrap('test'),
+        Selector::wrap('test'),
+    ],
+]);
