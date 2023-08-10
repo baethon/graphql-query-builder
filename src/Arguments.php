@@ -66,6 +66,11 @@ final class Arguments
             return false;
         }
 
+        // [SOMETHING] / [SOMETHING]!
+        if (preg_match('/^\[.+?\]\!?$/', $value)) {
+            return false;
+        }
+
         return true;
     }
 }

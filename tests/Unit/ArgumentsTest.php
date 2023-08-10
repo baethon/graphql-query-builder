@@ -13,6 +13,10 @@ it('converts arguments list to string', function ($input, string $expected) {
         '$ids: [ID!]!',
     ],
     [
+        ['ids' => '[ID!]!'],
+        'ids: [ID!]!',
+    ],
+    [
         ['id' => 'gid://Product/1'],
         'id: "gid://Product/1"',
     ],
