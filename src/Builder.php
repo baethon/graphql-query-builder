@@ -7,6 +7,8 @@ use Baethon\Graphql\Builder\Contracts\Argumentable;
 use Baethon\Graphql\Builder\Contracts\Selectable;
 use Baethon\Graphql\Builder\Templates\EmptySelector;
 use Baethon\Graphql\Builder\Templates\InlineSelector;
+use Baethon\Graphql\Builder\Templates\Mutation;
+use Baethon\Graphql\Builder\Templates\Query;
 use Baethon\Graphql\Builder\Templates\Selector;
 
 class Builder
@@ -67,5 +69,15 @@ class Builder
     public static function inline(string $type): InlineSelector
     {
         return new InlineSelector($type);
+    }
+
+    public static function query(...$modifiers): Query
+    {
+        return (new Pipeline)->reduceLine([new Query(), ...$modifiers]);
+    }
+
+    public static function mutation(...$modifiers): Mutation
+    {
+        return (new Pipeline)->reduceLine([new Mutation(), ...$modifiers]);
     }
 }
