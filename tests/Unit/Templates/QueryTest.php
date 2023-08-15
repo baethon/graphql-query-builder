@@ -18,9 +18,9 @@ it('builds a query', function (Query $query, string $expected) {
     ],
     'query with arguments' => [
         $pipeline(
-            Builder::arguments(['ids' => '[ID!]!']),
+            Builder::arguments(['$ids' => '[ID!]!']),
         ),
-        "query(ids: [ID!]!) {\n}",
+        "query(\$ids: [ID!]!) {\n}",
     ],
     'query with nested fields' => [
         $pipeline(
@@ -30,9 +30,9 @@ it('builds a query', function (Query $query, string $expected) {
     ],
     'query with nested fields and arguments' => [
         $pipeline(
-            Builder::arguments(['ids' => '[ID!]!']),
+            Builder::arguments(['$ids' => '[ID!]!']),
             Builder::select(['firstName']),
         ),
-        "query(ids: [ID!]!) {\nfirstName\n}",
+        "query(\$ids: [ID!]!) {\nfirstName\n}",
     ],
 ]);

@@ -18,9 +18,9 @@ it('builds a query', function (Mutation $mutation, string $expected) {
     ],
     'mutation with arguments' => [
         $pipeline(
-            Builder::arguments(['ids' => '[ID!]!']),
+            Builder::arguments(['$ids' => '[ID!]!']),
         ),
-        "mutation(ids: [ID!]!) {\n}",
+        "mutation(\$ids: [ID!]!) {\n}",
     ],
     'mutation with nested fields' => [
         $pipeline(
@@ -30,9 +30,9 @@ it('builds a query', function (Mutation $mutation, string $expected) {
     ],
     'mutation with nested fields and arguments' => [
         $pipeline(
-            Builder::arguments(['ids' => '[ID!]!']),
+            Builder::arguments(['$ids' => '[ID!]!']),
             Builder::select(['firstName']),
         ),
-        "mutation(ids: [ID!]!) {\nfirstName\n}",
+        "mutation(\$ids: [ID!]!) {\nfirstName\n}",
     ],
 ]);
