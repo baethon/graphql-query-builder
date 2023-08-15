@@ -1,11 +1,11 @@
 <?php
 
-use Baethon\Graphql\Builder\Arguments;
 use Baethon\Graphql\Builder\Builder;
 use Baethon\Graphql\Builder\Contracts\Aliasable;
 use Baethon\Graphql\Builder\Contracts\Argumentable;
 use Baethon\Graphql\Builder\Contracts\Selectable;
 use Baethon\Graphql\Builder\RawValue;
+use Baethon\Graphql\Builder\Templates\Arguments;
 use Baethon\Graphql\Builder\Templates\EmptySelector;
 use Baethon\Graphql\Builder\Templates\Selector;
 

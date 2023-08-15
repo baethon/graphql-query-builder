@@ -2,7 +2,7 @@
 
 namespace Baethon\Graphql\Builder\Traits;
 
-use Baethon\Graphql\Builder\Arguments;
+use Baethon\Graphql\Builder\Templates\Arguments;
 
 trait HasArguments
 {

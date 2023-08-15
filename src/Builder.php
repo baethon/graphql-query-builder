@@ -5,6 +5,7 @@ namespace Baethon\Graphql\Builder;
 use Baethon\Graphql\Builder\Contracts\Aliasable;
 use Baethon\Graphql\Builder\Contracts\Argumentable;
 use Baethon\Graphql\Builder\Contracts\Selectable;
+use Baethon\Graphql\Builder\Templates\Arguments;
 use Baethon\Graphql\Builder\Templates\EmptySelector;
 use Baethon\Graphql\Builder\Templates\InlineSelector;
 use Baethon\Graphql\Builder\Templates\Mutation;

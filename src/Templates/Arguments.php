@@ -1,6 +1,8 @@
 <?php
 
-namespace Baethon\Graphql\Builder;
+namespace Baethon\Graphql\Builder\Templates;
+
+use Baethon\Graphql\Builder\RawValue;
 
 final class Arguments
 {

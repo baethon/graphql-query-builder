@@ -2,7 +2,7 @@
 
 namespace Baethon\Graphql\Builder\Contracts;
 
-use Baethon\Graphql\Builder\Arguments;
+use Baethon\Graphql\Builder\Templates\Arguments;
 
 interface Argumentable
 {

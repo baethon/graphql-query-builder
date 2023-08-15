@@ -1,7 +1,7 @@
 <?php
 
-use Baethon\Graphql\Builder\Arguments;
 use Baethon\Graphql\Builder\RawValue;
+use Baethon\Graphql\Builder\Templates\Arguments;
 
 it('converts arguments list to string', function ($input, string $expected) {
     $arguments = new Arguments($input);
