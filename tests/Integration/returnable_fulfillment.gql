@@ -1,0 +1,33 @@
+query {
+  returnableFulfillment(id: "gid://shopify/ReturnableFulfillment/607470790") {
+    id
+    fulfillment {
+      id
+      status
+    }
+    returnableFulfillmentLineItems(first: 5) {
+      edges {
+        node {
+          quantity
+          fulfillmentLineItem {
+            id
+            lineItem {
+              id
+              originalUnitPriceSet {
+                shopMoney {
+                  amount
+                  currencyCode
+                }
+              }
+              quantity
+              requiresShipping
+              taxable
+              unfulfilledQuantity
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
