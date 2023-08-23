@@ -1,5 +1,0 @@
-query($contractId: ID!, $date: DateTime!) {
-  subscriptionBillingCycle(billingCycleInput: {contractId: $contractId, selector: {date: $date}}) {
-    billingAttemptExpectedDate
-  }
-}
