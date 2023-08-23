@@ -1,0 +1,9 @@
+query {
+  node(id: "gid://shopify/Product/108828309") {
+    id
+    ... on Product {
+      title
+      handle
+    }
+  }
+}

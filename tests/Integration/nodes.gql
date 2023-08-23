@@ -1,0 +1,18 @@
+query {
+  nodes(ids: ["gid://shopify/Product/108828309", "gid://shopify/GiftCard/924862292", "gid://shopify/Collection/142458073"]) {
+    id
+    ... on Product {
+      title
+    }
+    ... on GiftCard {
+      balance {
+        amount
+        currencyCode
+      }
+    }
+    ... on Collection {
+      sortOrder
+    }
+  }
+}
+
