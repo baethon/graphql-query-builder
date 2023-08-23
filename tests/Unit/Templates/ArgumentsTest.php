@@ -84,6 +84,10 @@ it('converts arguments list to string', function ($input, string $expected) {
         ['step' => RawValue::quote(1.5)],
         'step: "1.5"',
     ],
+    [
+        ['ids' => ['gid://shopify/Product/108828309', 'gid://shopify/GiftCard/924862292', 'gid://shopify/Collection/142458073']],
+        'ids: ["gid://shopify/Product/108828309", "gid://shopify/GiftCard/924862292", "gid://shopify/Collection/142458073"]',
+    ],
 ]);
 
 it('wraps arguments', function () {

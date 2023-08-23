@@ -31,6 +31,13 @@ final class Arguments
 
     private function wrapValue($key, $value): string
     {
+        if (is_array($value)) {
+            return sprintf('[%s]', implode(
+                ', ',
+                array_map(fn ($value) => $this->wrapValue('', $value), $value),
+            ));
+        }
+
         if ($this->shouldQuote($key, $value)) {
             return sprintf('"%s"', $value);
         }
@@ -55,7 +62,7 @@ final class Arguments
             return false;
         }
 
-        if (is_int($value) || is_float($value) || is_bool($value)) {
+        if (is_int($value) || is_float($value) || is_bool($value) || is_array($value)) {
             return false;
         }
 
