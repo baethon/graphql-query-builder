@@ -39,6 +39,11 @@ class Builder
         };
     }
 
+    public static function args(array|Arguments $arguments): callable
+    {
+        return static::arguments($arguments);
+    }
+
     public static function select(array $selectors): callable
     {
         return function (Selectable $selectable) use ($selectors) {
